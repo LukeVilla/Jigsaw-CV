@@ -23,7 +23,7 @@ Solving jigsaw puzzles is somewhat of an underutilized space in the machine-lear
 5. Load the dataset into the standard jetson-inference classification workflow (`train.py`, `onnx_export.py` and then `imagenet`).
 
 # Video
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QPpG9Ezy7SE?si=zRNEIsIpVCPA6JK6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![View on YouTube](https://github.com/user-attachments/assets/6faaaf85-4b3b-4df4-98a7-f56d57b83409)](https://youtu.be/QPpG9Ezy7SE)
 
 # Results
 The model seems to be overfitting; it always gives the same result no matter what images I give it, even when those images are from its own training data. The Canny algorithm did sometimes make correct outlines, but other times it got confused by other patterns in the piece or the background, making the actual shape of the piece unreadable. Either way, the validation accuracy was usually only around 35-50%. I might just need more training data, since I didn't have any actual puzzles on hand and had to generate my own. However, I think it's more likely that this kind of model is just not suited for this task; an ImageNet network is good at finding the piece, but a different algorithm might do a better job at actually tracing the piece's outline and finding edges.
