@@ -18,5 +18,8 @@ Solving jigsaw puzzles is somewhat of an underutilized space in the machine-lear
 3. Run `split.py` to split the images into dataset folders.
 4. Load the dataset into the standard jetson-inference classification workflow (`train.py`, `onnx_export.py` and then `imagenet`).
 
+# Results
+The model seems to be overfitting; it gives a result of "edge" no matter what images I give it. I might just need more training data, but I think it's more likely that this kind of model is not suited for this task; an ImageNet network is good at finding the piece, but a different algorithm might do a better job at actually tracing the piece's outline and finding edges. Maybe it would work better if I put the images through an extra edge-detection step first.
+
 # Credits
 The sample images in the `bg` and `images` folders were sourced from Unsplash.
