@@ -13,6 +13,8 @@ Solving jigsaw puzzles is somewhat of an underutilized space in the machine-lear
 - [split-folders](https://pypi.org/project/split-folders/)
 - [OpenCV2](https://pypi.org/project/opencv-python/)
 - [NumPy](https://pypi.org/project/numpy/)
+> [!NOTE]
+> OpenCV requires NumPy 2, while jetson-inference requires NumPy 1. You might need to use a virtual environment for this.
 
 1. Place the input images in the `images` folder. If you have any premade training images, split them into `corner`, `edge` and `mid` folders and pass the root directory in with the `-a` flag. These will be copied into the appropriate folders.
 2. Run `gen_pieces.py`.
@@ -20,11 +22,11 @@ Solving jigsaw puzzles is somewhat of an underutilized space in the machine-lear
 4. Run `split.py` to split the images into dataset folders.
 5. Load the dataset into the standard jetson-inference classification workflow (`train.py`, `onnx_export.py` and then `imagenet`).
 
-> [!NOTE]
-> OpenCV requires NumPy 2, while jetson-inference requires NumPy 1. You might need to use a virtual environment for this.
+# Video
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QPpG9Ezy7SE?si=zRNEIsIpVCPA6JK6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 # Results
-The model seems to be overfitting; it always gives the same result no matter what images I give it, even when those images are from its own training data. The Canny algorithm did sometimes make correct outlines, but other times it got confused by other patterns in the piece or the background, making the actual shape of the piece unreadable. Either way, the validation accuracy was usually only around 35-50%. I might just need more training data, but I think it's more likely that this kind of model is not suited for this task; an ImageNet network is good at finding the piece, but a different algorithm might do a better job at actually tracing the piece's outline and finding edges.
+The model seems to be overfitting; it always gives the same result no matter what images I give it, even when those images are from its own training data. The Canny algorithm did sometimes make correct outlines, but other times it got confused by other patterns in the piece or the background, making the actual shape of the piece unreadable. Either way, the validation accuracy was usually only around 35-50%. I might just need more training data, since I didn't have any actual puzzles on hand and had to generate my own. However, I think it's more likely that this kind of model is just not suited for this task; an ImageNet network is good at finding the piece, but a different algorithm might do a better job at actually tracing the piece's outline and finding edges.
 
 # Credits
 The sample images in the `bg` and `images` folders were sourced from Unsplash.
