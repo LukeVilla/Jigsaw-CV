@@ -16,7 +16,7 @@ Solving jigsaw puzzles is somewhat of an underutilized space in the machine-lear
 
 1. Place the input images in the `images` folder. If you have any premade training images, split them into `corner`, `edge` and `mid` folders and pass the root directory in with the `-a` flag. These will be copied into the appropriate folders.
 2. Run `gen_pieces.py`.
-3. Optionally, run `outline_images.py` on the output folder..
+3. Optionally, run `outline_images.py` on the output folder.
 4. Run `split.py` to split the images into dataset folders.
 5. Load the dataset into the standard jetson-inference classification workflow (`train.py`, `onnx_export.py` and then `imagenet`).
 
