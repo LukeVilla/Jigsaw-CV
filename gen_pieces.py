@@ -29,6 +29,7 @@ parser.add_argument("-o","--out-dir",default="out",help="Where the output images
 parser.add_argument("-n","--num-pieces",default=12,help="How many pieces to generate for each puzzle")
 parser.add_argument("-a","--add-dir",action="append",default=None,help="Additional dir to copy images from")
 parser.add_argument("-g","--generate",default=20,help="The number of images to generate per category per image")
+parser.add_argument("-b","--bg-dir",default="bg",help="Where the backgrounds are stored")
 parser.add_argument("--no-outline",action="store_true",help="Skip generating outlines for pieces")
 args = parser.parse_args()
 image_dir = args.image_dir
@@ -37,6 +38,7 @@ out_dir = args.out_dir
 num_pieces = args.num_pieces
 additional_dirs = args.add_dir
 generate = args.generate
+bg_dir = args.bg_dir
 if args.no_outline:
     outline = lambda x: x
 
@@ -56,6 +58,7 @@ images = os.listdir(image_dir)
 for image in tqdm(images):
     image_out_dir = os.path.join(puzzles_dir,os.path.splitext(image)[0])
     os.mkdir(image_out_dir)
+    print("")
     subprocess.run(["piecemaker","--dir",image_out_dir,"-n",str(num_pieces),os.path.join(image_dir,image)])
 
 labels = {}
@@ -65,7 +68,7 @@ scale_max = 250
 
 def gen(index_p1:str,scale:float,set:str):
     global idx
-    with Image.open(os.path.join(pieces_dir,index_p1+".png")) as p1,Image.open(os.path.join("bg",random.choice(os.listdir("bg")))) as bg:
+    with Image.open(os.path.join(pieces_dir,index_p1+".png")) as p1,Image.open(os.path.join(bg_dir,random.choice(os.listdir(bg_dir)))) as bg:
         p1 = p1.resize((int(p1.width*scale), int(p1.height*scale)))
         p1 = p1.rotate(random.randrange(360),expand=True)
         outline1 = outline(p1)
