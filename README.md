@@ -11,6 +11,7 @@ Solving jigsaw puzzles is somewhat of an underutilized space in the machine-lear
 - [tqdm](https://pypi.org/project/tqdm/)
 - [Pillow](https://pypi.org/project/pillow/)
 - [split-folders](https://pypi.org/project/split-folders/)
+- [OpenCV2](https://pypi.org/project/opencv-python/)
 
 1. Place the input images in the `images` folder. If you have any premade training images, split them into `corner`, `edge` and `mid` folders and pass the root directory in with the `-a` flag. These will be copied into the appropriate folders.
 2. Run `gen_pieces.py`.
