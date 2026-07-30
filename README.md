@@ -20,10 +20,11 @@ Solving jigsaw puzzles is somewhat of an underutilized space in the machine-lear
 4. Run `split.py` to split the images into dataset folders.
 5. Load the dataset into the standard jetson-inference classification workflow (`train.py`, `onnx_export.py` and then `imagenet`).
 
-Note: OpenCV requires NumPy 2, while jetson-inference requires NumPy 1. You might need to use a virtual environment for this.
+> [!NOTE]
+> OpenCV requires NumPy 2, while jetson-inference requires NumPy 1. You might need to use a virtual environment for this.
 
 # Results
-The model seems to be overfitting; it gives a result of "edge" no matter what images I give it. I might just need more training data, but I think it's more likely that this kind of model is not suited for this task; an ImageNet network is good at finding the piece, but a different algorithm might do a better job at actually tracing the piece's outline and finding edges. The Canny algorithm did sometimes make correct outlines, but other times it got confused by other patterns in the piece or the background, making the actual shape of the piece unreadable. Either way, the validation accuracy was usually only around 35-50%.
+The model seems to be overfitting; it always gives the same result no matter what images I give it, even when those images are from its own training data. The Canny algorithm did sometimes make correct outlines, but other times it got confused by other patterns in the piece or the background, making the actual shape of the piece unreadable. Either way, the validation accuracy was usually only around 35-50%. I might just need more training data, but I think it's more likely that this kind of model is not suited for this task; an ImageNet network is good at finding the piece, but a different algorithm might do a better job at actually tracing the piece's outline and finding edges.
 
 # Credits
 The sample images in the `bg` and `images` folders were sourced from Unsplash.
