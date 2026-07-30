@@ -16,3 +16,6 @@ Solving jigsaw puzzles is somewhat of an underutilized space in the machine-lear
 2. Run `gen_pieces.py`.
 3. Run `split.py` to split the images into dataset folders.
 4. Load the dataset into the standard jetson-inference classification workflow (`train.py`, `onnx_export.py` and then `imagenet`).
+
+# Credits
+The sample images in the `bg` and `images` folders were sourced from Unsplash.
